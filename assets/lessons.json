@@ -1,0 +1,11 @@
+[
+  {
+    "id": 0,
+    "index": 0,
+    "name": "Hello, Markdown",
+    "description": "Get familiar with Markdown's basic elements",
+    "tier": "Beginner",
+    "tasks": [ 0, 1, 2, 3 ],
+    "completed": false
+  }
+]

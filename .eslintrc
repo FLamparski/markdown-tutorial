@@ -1,0 +1,32 @@
+env:
+  browser: true
+  jquery: true
+  es6: true
+
+rules:
+  curly: [2, 'always']
+  new-cap: 2
+  quotes: [1, 'single', 'avoid-escape']
+  radix: 2
+  space-after-keywords: 1
+  space-in-brackets: [1, 'never']
+  no-undefined: 2
+  wrap-iife: 2
+  no-unreachable: 1
+  valid-typeof: 2
+  no-var: 2
+  no-caller: 2
+  dot-notation: 1
+  no-native-reassign: 2
+  no-redeclare: 2
+  indent: [2, 2]
+  brace-style: [2, '1tbs', {allowSingleLine: true}]
+  strict: 0
+  no-console: 0
+  no-undefined: 0
+
+ecmaFeatures:
+  arrowFunctions: true
+  blockBindings: true
+  classes: true
+  templateStrings: true

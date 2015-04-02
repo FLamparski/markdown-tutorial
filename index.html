@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>Markdown Tutorial</title>
+  <link rel="stylesheet" href="css/bundle.css" type="text/css" />
+  <link rel="stylesheet" href="js/vendor/codemirror/lib/codemirror.css" type="text/css" />
+</head>
+<body>
+  <div class="menu-wrapper">
+    <button class="menu-button" data-shortcut="esc click">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path class="icon icon-menu" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg> Menu
+    </button>
+    <div id="menu" class="menu hidden">
+      <a href="#overview" class="menu-item" data-shortcut="ctrl+o click">Overview</a>
+      <a href="#new" class="menu-item" data-shortcut="ctrl+n click">New Session</a>
+      <a href="#help" class="menu-item" data-shortcut="f1 click">Help</a>
+    </div>
+  </div>
+  <div class="main-wrapper">
+  </div>
+  <div class="loader-container">
+    <div class="loader-outer">
+      <div class="loader-spinner"></div>
+      <span class="loader-label">Loading</span>
+    </div>
+  </div>
+
+  <script src="js/bootstrap.js"></script><!-- not the twitter one -->
+  <script src="js/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="js/vendor/underscore/underscore-min.js"></script>
+  <script src="js/vendor/backbone/backbone.js"></script>
+  <script src="js/vendor/jquery.hotkeys/jquery.hotkeys.js" async></script>
+  <script src="js/vendor/backbone.localStorage/backbone.localStorage-min.js" async></script>
+  <script src="js/vendor/codemirror/lib/codemirror.js" async></script>
+  <script src="js/bundle.js" async></script>
+</body>
+</html>
