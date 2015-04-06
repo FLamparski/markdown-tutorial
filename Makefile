@@ -2,22 +2,26 @@ SHELL=/bin/bash
 PYTHON=python3
 NODE=node
 SERVERMOD=http.server
-BABEL=babel
+ROOT=$(shell pwd)
+NPM_BIN=$(ROOT)/node_modules/.bin
+BROWSERIFY=$(NPM_BIN)/browserify
+ESLINT=$(NPM_BIN)/eslint
 
 SRC_JS=$(shell find ./js -not -path '*/vendor/*' -name '*.js' -and -not -name 'bootstrap.js')
-SRC_SASS=./sass/main.scss
-SRC_ASSETS=./assets
-WATCH_FILES=$(SRC_JS) ./js/bootstrap.js ./sass $(SRC_ASSETS) index.html Makefile package.json bower.json
-BUILDDIR=./build
+MAIN_JS=$(ROOT)/js/main.js
+SRC_SASS=$(ROOT)/sass/main.scss
+SRC_ASSETS=$(ROOT)/assets
+WATCH_FILES=$(SRC_JS) $(ROOT)/sass $(SRC_ASSETS) index.html Makefile package.json bower.json
+BUILDDIR=$(ROOT)/build
 
 BUILDTYPE='development'
 
 .PHONY: all test clean serve watch
 
-all: $(BUILDDIR)/js/bundle.js $(BUILDDIR)/css/bundle.css $(BUILDDIR)/assets $(BUILDDIR)/index.html
+all: $(BUILDDIR)/js/bundle.js $(BUILDDIR)/css/bundle.css $(BUILDDIR)/assets $(BUILDDIR)/templates $(BUILDDIR)/index.html
 
 test:
-	@./test.sh
+	@$(ROOT)/test.sh
 
 clean:
 	rm -r $(BUILDDIR)
@@ -37,31 +41,33 @@ $(BUILDDIR):
 	@mkdir $@
 
 $(BUILDDIR)/index.html: $(BUILDDIR)
-	@cp -f ./index.html $@
+	@cp -f $(ROOT)/index.html $@
 
 $(BUILDDIR)/js: $(BUILDDIR)
 	@if [ ! -d $@ ]; then mkdir $@; fi
 
-$(BUILDDIR)/js/bootstrap.js: $(BUILDDIR)/js
-	@cp -f ./js/bootstrap.js $@
-
 $(BUILDDIR)/js/vendor: $(BUILDDIR)/js
-	@cp -r ./js/vendor $@
+	@cp -rf $(ROOT)/js/vendor $@
 
-$(BUILDDIR)/js/bundle.js: $(BUILDDIR)/js $(BUILDDIR)/js/bootstrap.js $(BUILDDIR)/js/vendor
-	eslint $(SRC_JS)
-	babel -m ignore $(SRC_JS) > $@
+$(BUILDDIR)/js/bundle.js: $(BUILDDIR)/js $(BUILDDIR)/js/vendor
+	$(ESLINT) $(SRC_JS)
+	$(BROWSERIFY) -d -e $(MAIN_JS) -t babelify -o $@
 
-$(BUILDDIR)/css/bundle.css: $(BUILDDIR)
-	@if [ ! -d $(BUILDDIR)/css ]; then mkdir $(BUILDDIR)/css; fi
-	sass $(SRC_SASS) > $@
+$(BUILDDIR)/css/bundle.css: $(ROOT)/sass
+	cd sass && make all BUILDDIR=$(BUILDDIR) ROOT=$(ROOT)
+
+$(BUILDDIR)/templates: $(ROOT)/templates
+	cd templates && make all BUILDDIR=$(BUILDDIR) ROOT=$(ROOT) NPM_BIN=$(NPM_BIN)
 
 $(BUILDDIR)/assets: $(BUILDDIR)
+	@if [ ! -d $@ ]; then mkdir $@; fi
+
+$(BUILDDIR)/assets/images: $(BUILDDIR)/assets
 	@case $(BUILDTYPE) in\
 		'development')\
-			if [ ! -L $@ ]; then ln -s ../assets $@; fi\
+			if [ ! -L $@ ]; then ln -s ../assets/images $@; fi\
 			;;\
 		'production')\
-			cp -r ../assets $@\
+			cp -r ../assets/images $@\
 			;;\
 	esac
