@@ -1,5 +1,11 @@
-/* global ANIM_END:true */
-const ANIM_END = (function (){ //eslint-disable-line
+/* eslint-disable no-unused-vars */
+
+import Loader from './components/loader.js';
+import Menu from './components/menu.js';
+import Keyboard from './controls/keyboard.js';
+import * as Models from './models.js';
+
+window.ANIM_END = (function (){ //eslint-disable-line no-unused-vars
   let t;
   let el = document.createElement('fakeelement');
   const animations = {
@@ -15,3 +21,9 @@ const ANIM_END = (function (){ //eslint-disable-line
     }
   }
 }());
+
+$(function() {
+  Menu.init();
+  Keyboard.init();
+  Loader.hide();
+});
