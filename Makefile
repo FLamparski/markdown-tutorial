@@ -18,7 +18,13 @@ BUILDTYPE='development'
 
 .PHONY: all test clean serve watch
 
-all: $(BUILDDIR)/js/bundle.js $(BUILDDIR)/css/bundle.css $(BUILDDIR)/assets $(BUILDDIR)/templates $(BUILDDIR)/index.html
+all: $(BUILDDIR)/js/bundle.js\
+	$(BUILDDIR)/css/bundle.css\
+	$(BUILDDIR)/assets\
+	$(BUILDDIR)/assets/monokai.css\
+	$(BUILDDIR)/assets/codemirror.css\
+	$(BUILDDIR)/templates\
+	$(BUILDDIR)/index.html
 
 test:
 	@$(ROOT)/test.sh
@@ -61,6 +67,9 @@ $(BUILDDIR)/templates: $(ROOT)/templates
 
 $(BUILDDIR)/assets: $(BUILDDIR)
 	@if [ ! -d $@ ]; then mkdir $@; fi
+
+$(BUILDDIR)/assets/%.css: $(ROOT)/assets/%.css $(BUILDDIR)/assets
+	cp -f $^
 
 $(BUILDDIR)/assets/images: $(BUILDDIR)/assets
 	@case $(BUILDTYPE) in\

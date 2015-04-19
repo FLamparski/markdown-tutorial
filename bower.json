@@ -19,7 +19,6 @@
     "tests"
   ],
   "dependencies": {
-    "codemirror": "~5.1.0",
-    "jquery.hotkeys": "jeresig/jquery.hotkeys#~0.2.0",
+    "jquery.hotkeys": "jeresig/jquery.hotkeys#~0.2.0"
   }
 }

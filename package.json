@@ -14,5 +14,9 @@
     "browserify": "^9.0.7",
     "eslint": "^0.18.0",
     "riot": "^2.0.13"
+  },
+  "dependencies": {
+    "codemirror": "^5.1.0",
+    "commonmark": "^0.18.1"
   }
 }
