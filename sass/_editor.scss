@@ -1,0 +1,32 @@
+//@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700&subset=latin,latin-ext);
+
+markdown {
+  display: block;
+
+  &.small {
+    height: 300px;
+    margin: 10px 0;
+  }
+  .editor .CodeMirror {
+    font-family: Inconsolata, Source Code Pro, Consolas, Ubuntu Mono,
+      Courier New, monospace;
+    font-size: 15px;
+    height: 100%;
+  }
+  .preview {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .row {
+    display: flex;
+    height: 100%;
+  }
+
+  @media screen and (min-width: 786px) {
+    .editor, .preview {
+      flex: 1;
+      height: 100%;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,700,700italic|Roboto+Condensed:700);
+//@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,700,700italic|Roboto+Condensed:700);
 
 $border-radius-base-small: 3px;
 
@@ -16,6 +16,7 @@ $active-color: #2196F3;
 
 @import '_menu';
 @import '_loader';
+@import '_editor';
 
 html {
   height: 100%;
@@ -31,10 +32,10 @@ body {
 }
 
 .main-wrapper {
-  padding: 50px 15px 0;
+  padding: 50px 15px 10px;
   overflow: auto;
   width: 100%;
-  height: calc(100% - 50px);
+  height: 100%;
 }
 
 .card {

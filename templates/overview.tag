@@ -1,4 +1,4 @@
-<div class="overview">
+<overview>
   <h2>Overview</h2>
   <div class="narrow card">
     <p>This page will track your progress through the tutorial. You can
@@ -21,13 +21,13 @@
       </ul>
     </div>
   </div>
-</div>
 
-<script type="es6">
-  this.tiers = _.chain(this.lessons).groupBy('tier').map((lessons, tier) => {
-    return {
-      name: tier,
-      lessons
-    }
-  });
-</script>
+  <script type="es6">
+    this.tiers = _.chain(this.lessons).groupBy('tier').map((lessons, tier) => {
+      return {
+        name: tier,
+        lessons
+      }
+    }).value();
+  </script>
+</overview>
