@@ -3,19 +3,24 @@
 markdown {
   display: block;
 
-  &.small {
-    height: 300px;
-    margin: 10px 0;
+  &.md-small {
+    height: 200px;
   }
+
   .editor .CodeMirror {
     font-family: Inconsolata, Source Code Pro, Consolas, Ubuntu Mono,
       Courier New, monospace;
     font-size: 15px;
     height: 100%;
+
+    .md-highlight-source {
+      background-color: rgb(100, 100, 100);
+    }
   }
   .preview {
     height: 100%;
     overflow: auto;
+    padding-left: 10px;
   }
 
   .row {
