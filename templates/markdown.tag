@@ -18,10 +18,29 @@
         theme: 'monokai',
         lineWrapping: true,
         lineNumbers: true,
-        inputStyle: 'contenteditable',
+        inputStyle: 'textarea',
         value: opts.value || $('.initial-content').text() || ''
       });
       this.codemirror.on('changes', _.debounce(this.update.bind(this), 200));
+      this.codemirror.refresh();
+
+      let currentMark;
+      $('.preview', this.root).on('mouseenter', '[data-sourcepos]', e => {
+        let [startpos, endpos] = $(e.target).data('sourcepos').split('-');
+        // commonmark returns character positions using 1-based indices,
+        // codemirror wants 0-based.
+        let start = {
+          line: parseInt(startpos.split(':')[0], 10) - 1,
+          ch: parseInt(startpos.split(':')[1], 10) - 1
+        };
+        let end = {
+          line: parseInt(endpos.split(':')[0], 10),
+          ch: parseInt(endpos.split(':')[1], 10)
+        };
+        currentMark = this.codemirror.markText(start, end, {className: 'md-highlight-source'});
+      }).on('mouseleave', '[data-sourcepos]', e => {
+        currentMark.clear();
+      });
     });
     this.on('update', () => {
       if (!this.codemirror) {
