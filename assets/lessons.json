@@ -4,8 +4,55 @@
     "index": 0,
     "name": "Hello, Markdown",
     "description": "Get familiar with Markdown's basic elements",
-    "tier": "Beginner",
-    "tasks": [ 0, 1, 2, 3 ],
-    "completed": false
+    "tier": "Beginner"
+  },
+  {
+    "id": 1,
+    "index": 1,
+    "name": "Standing Out",
+    "description": "Be bold and emphasise the important bits",
+    "tier": "Beginner"
+  },
+  {
+    "id": 2,
+    "index": 2,
+    "name": "Linking it",
+    "description": "Add links to your documents",
+    "tier": "Beginner"
+  },
+  {
+    "id": 3,
+    "index": 3,
+    "name": "Headline News",
+    "description": "Organise your documents with a hierarchy headings",
+    "tier": "Beginner"
+  },
+  {
+    "id": 4,
+    "index": 4,
+    "name": "A picture is worth a thousand words",
+    "description": "Embed pictures in your documents to illustrate your point",
+    "tier": "Beginner"
+  },
+  {
+    "id": 5,
+    "index": 5,
+    "name": "Check it twice",
+    "description": "Create lists, with and without ordering",
+    "tier": "Beginner"
+  },
+  {
+    "id": 6,
+    "index": 6,
+    "name": "Quote me on this",
+    "description": "Add in block quotes (which are also Markdown!)",
+    "tier": "Beginner"
+  },
+  {
+    "id": 7,
+    "index": 7,
+    "name": "10 PRINT HELLO",
+    "description": "Add code and preformatted text",
+    "tier": "Beginner"
   }
 ]
